@@ -2,18 +2,22 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import { Provider } from 'react-redux';
 import { ConnectedRouter } from 'react-router-redux';
-import createBrowserHistory from 'history';
+import createBrowserHistory from 'history/createBrowserHistory';
 import App from './App';
-import * as reducers from './reducers';
+import createStore from './createStore';
 
-const store = createStore(
-	combineReducers(reducers),
-	applyMiddleware(logger)
-);
+// 
+const history = createBrowserHistory();
+console.log(history)
+// 
+const store = createStore(history);
+console.log(store.getState())
 
 ReactDOM.render(
 	<Provider store={store}>
-		<App />
+		<ConnectedRouter history={history}>
+			<App />
+		</ConnectedRouter>
 	</Provider>,
 	document.getElementById('root')
 );

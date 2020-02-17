@@ -1,4 +1,6 @@
-import { createStore as reduxCreateStore, combineReducers, applyMiddleware } from 'redux';
+import { createStore as reduxCreateStore, 
+	combineReducers, 
+	applyMiddleware } from 'redux';
 import logger from 'redux-logger';
 import { routerReducer, routerMiddleware } from 'react-router-redux';
 
